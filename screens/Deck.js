@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 const BASE_SIZE = theme.SIZES.BASE;
 const COLOR_WHITE = theme.COLORS.WHITE;
 
+const { PRIMARY, WARNING } = theme.COLORS;
+
 export default function DeckScreen({ route, navigation }) {
   const { deckId } = route.params;
   const [showNoQuestionsError, setShowNoQuestionsError] = useState(false);
@@ -38,7 +40,9 @@ export default function DeckScreen({ route, navigation }) {
   return (
     <View style={styles.container}>
       <Block card shadow style={styles.card}>
-        <Text h4>{deck.title}</Text>
+        <Text h4 color={PRIMARY}>
+          {deck.title}
+        </Text>
         <Text h5 muted>
           {questionsCount} Cards
         </Text>
@@ -53,7 +57,7 @@ export default function DeckScreen({ route, navigation }) {
       <Button
         round
         uppercase
-        color="success"
+        color={PRIMARY}
         style={styles.marginVertical}
         onPress={handleStartQuiz}
       >
@@ -63,7 +67,7 @@ export default function DeckScreen({ route, navigation }) {
       <Button
         round
         uppercase
-        color="error"
+        color={WARNING}
         style={styles.marginVertical}
         onPress={handleAddCard}
       >
@@ -76,7 +80,7 @@ export default function DeckScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     alignItems: "center",
     padding: 32,
     // justifyContent: "center",
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_WHITE,
     shadowOpacity: 0.4,
 
-    alignSelf: 'stretch'
+    alignSelf: "stretch",
   },
 
   marginVertical: {

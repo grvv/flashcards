@@ -2,21 +2,31 @@ import React, { useState } from "react";
 import { Text, Button } from "galio-framework";
 import { StyleSheet, View } from "react-native";
 
+import theme from "../utils/theme";
+const { PRIMARY } = theme.COLORS;
+
 export default function Question(props) {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const { questionObject, handleAnsweredQuestion } = props;
 
   return (
-    <View>
-      <Text h5>Question</Text>
-      <Text muted>{questionObject.question}</Text>
+    <View style={styles.container}>
+      <View style={styles.verticalMargin}>
+        <Text h4 color={PRIMARY}>
+          Question :
+        </Text>
+        <Text h5 style={{ marginTop: 16 }}>
+          {questionObject.question}
+        </Text>
+      </View>
 
       {!showAnswer && (
         <Button
           round
           uppercase
-          color="info"
+          color={PRIMARY}
+          style={styles.marginTop}
           onPress={() => setShowAnswer(true)}
         >
           Show Answer
@@ -25,15 +35,23 @@ export default function Question(props) {
 
       {showAnswer && (
         <>
-          <Text>Answer</Text>
-          <Text>{questionObject.answer}</Text>
-          <Text>How did you do?</Text>
+          <Text h4 color={PRIMARY}>
+            Answer :
+          </Text>
+          <Text h5 style={{ marginTop: 16 }}>
+            {questionObject.answer}
+          </Text>
+
+          <Text h4 color={PRIMARY} style={styles.marginTop}>
+            How did you do?
+          </Text>
           <Text>You got the answer...</Text>
 
           <Button
             round
             uppercase
             color="success"
+            style={[styles.marginTop, styles.alignCenter]}
             onPress={() => handleAnsweredQuestion(true)}
           >
             Correct
@@ -42,6 +60,7 @@ export default function Question(props) {
             round
             uppercase
             color="error"
+            style={[styles.marginTop, styles.alignCenter]}
             onPress={() => handleAnsweredQuestion(false)}
           >
             InCorrect
@@ -51,3 +70,21 @@ export default function Question(props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
+  marginTop: {
+    marginTop: 32,
+  },
+  verticalMargin: {
+    marginTop: 32,
+    marginBottom: 32,
+  },
+
+  alignCenter: {
+    alignSelf: "center",
+  },
+});

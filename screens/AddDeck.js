@@ -7,6 +7,8 @@ import { addDeck } from "../actions";
 import { Input, Button, Text } from "galio-framework";
 import { useDispatch, useSelector } from "react-redux";
 
+const { PRIMARY } = theme.COLORS;
+
 export default function AddDeckScreen({ navigation }) {
   const [title, setTitle] = useState("");
   const [error, setError] = useState({});
@@ -74,7 +76,7 @@ export default function AddDeckScreen({ navigation }) {
       <Button
         round
         uppercase
-        color="error"
+        color={PRIMARY}
         style={{ marginTop: 20, alignSelf: "center" }}
         onPress={handleSubmit}
       >
@@ -88,8 +90,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
+    // backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

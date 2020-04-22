@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Text } from "galio-framework";
 import CustomStatusBar from "../components/CustomStatusBar";
 import { StyleSheet, View, ScrollView, ActivityIndicator } from "react-native";
-import theme from "../utils/theme";
 import DeckCard from "../components/DeckCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
 
-const BASE_SIZE = theme.SIZES.BASE;
+import theme from "../utils/theme";
+
+const { PRIMARY } = theme.COLORS;
 
 export default function DecksScreen({ navigation }) {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function DecksScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
 
   const goToDeck = (params) => navigation.navigate("Deck", { ...params });
-  
+
   const renderCards = () =>
     decksArray.map((deck, index) => (
       <DeckCard
@@ -41,7 +42,9 @@ export default function DecksScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <CustomStatusBar />
-      <Text h4>Mobile Flashcards</Text>
+      <Text h4 color={PRIMARY}>
+        Mobile Flashcards
+      </Text>
       <Text h5 muted>
         Fun way to preparing for tests!
       </Text>
@@ -62,7 +65,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    backgroundColor: "#fff",
   },
 
   deckCount: {

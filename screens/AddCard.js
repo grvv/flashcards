@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 
 import { addCard } from "../actions";
 
+const { PRIMARY } = theme.COLORS;
+
 export default function AddCardScreen({ route, navigation }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -75,7 +77,7 @@ export default function AddCardScreen({ route, navigation }) {
       <Button
         round
         uppercase
-        color="error"
+        color={PRIMARY}
         style={{ marginTop: 20, alignSelf: "center" }}
         onPress={handleSubmit}
       >
@@ -89,6 +91,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
 });

@@ -9,6 +9,9 @@ import {
 import Question from "../components/Question";
 import QuizResult from "../components/QuizResult";
 
+import theme from "../utils/theme";
+const { PRIMARY } = theme.COLORS;
+
 export default function QuizScreen({ route, navigation }) {
   const { deckId } = route.params;
   const { questions } = useSelector((decks) => ({
@@ -47,7 +50,9 @@ export default function QuizScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text h4>Quiz Time!!</Text>
+      <Text h4 color={PRIMARY}>
+        Quiz Time!!
+      </Text>
       <Text h5 muted>
         {`${currentQuestionIndex + 1}/${questions.length}`}
       </Text>
@@ -73,6 +78,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
 });

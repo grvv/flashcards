@@ -5,9 +5,10 @@ import { LinearGradient as Gradient } from "expo-linear-gradient";
 
 import theme from "../utils/theme";
 
+const { PRIMARY } = theme.COLORS;
+
 const GRADIENT_BLUE = ["#6B84CA", "#8F44CE"];
 const GRADIENT_PINK = ["#D442F8", "#B645F5", "#9B40F8"];
-const COLOR_GREY = theme.COLORS.MUTED;
 
 const BASE_SIZE = theme.SIZES.BASE;
 const COLOR_WHITE = theme.COLORS.WHITE;
@@ -55,7 +56,7 @@ export default function DeckCard({ deck, index, goToDeck }) {
             size={BASE_SIZE}
             name="chevron-thin-right"
             family="entypo"
-            color={COLOR_GREY}
+            color={PRIMARY}
           />
         </Block>
       </TouchableOpacity>
