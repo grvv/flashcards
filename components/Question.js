@@ -10,6 +10,11 @@ export default function Question(props) {
 
   const { questionObject, handleAnsweredQuestion } = props;
 
+  const handleButtonClick = (value) => {
+    setShowAnswer(false);
+    handleAnsweredQuestion(value);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.verticalMargin}>
@@ -52,7 +57,7 @@ export default function Question(props) {
             uppercase
             color="success"
             style={[styles.marginTop, styles.alignCenter]}
-            onPress={() => handleAnsweredQuestion(true)}
+            onPress={() => handleButtonClick(true)}
           >
             Correct
           </Button>
@@ -61,7 +66,7 @@ export default function Question(props) {
             uppercase
             color="error"
             style={[styles.marginTop, styles.alignCenter]}
-            onPress={() => handleAnsweredQuestion(false)}
+            onPress={() => handleButtonClick(false)}
           >
             InCorrect
           </Button>

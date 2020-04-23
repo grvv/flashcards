@@ -42,12 +42,12 @@ export default function AddDeckScreen({ navigation }) {
           created: dateString,
           questions: [],
         })
-      );
+      ).then(() => {
+        setTitle("");
+        setError({});
 
-      setTitle("");
-      setError({});
-
-      navigation.navigate("Decks");
+        navigation.navigate("Deck", { deckId });
+      });
     }
 
     setError(errorObj);
